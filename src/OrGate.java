@@ -56,7 +56,9 @@ public class OrGate implements Observer, Subject{
 
     @Override
     public void removeObserver(Observer o) {
-        observers.remove(o);
+
+        int i = observers.indexOf(o);
+        if (i >= 0) {observers.remove(o);}
     }
 
     @Override

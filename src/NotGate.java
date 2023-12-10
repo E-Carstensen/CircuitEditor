@@ -22,20 +22,26 @@ public class NotGate implements Subject, Observer{
      */
     @Override
     public void update() {
+        // if no input output true
         if (input == null){
             output = true;
             notifyObservers();
             return;
         }
 
-        if (input.getOutput()){
+        // output the opposite of the input
+        if (input.getOutput()) {
             output = false;
-        }else{
+        } else {
             output = true;
         }
         notifyObservers();
     }
 
+    /**
+     * Adds new observer to list of Observers, will be notified of changes to outputs
+     * @param o new Observer obj to add to list
+     */
     @Override
     public void addObserver(Observer o) {
         observers.add(o);
@@ -43,7 +49,10 @@ public class NotGate implements Subject, Observer{
 
     @Override
     public void removeObserver(Observer o) {
-        observers.remove(o);
+        int i = observers.indexOf(o);
+        if (i >= 0) {
+            observers.remove(o);
+        }
     }
 
     @Override
