@@ -1,18 +1,38 @@
 import java.util.ArrayList;
 
+/**
+ * Not gate implementation of Subject & Observer
+ * Takes a single input and inverts it as its output
+ * Default state is true
+ */
 public class NotGate implements Subject, Observer{
 
     private Subject input;
 
-    protected boolean output;
+    protected boolean output = true;
 
     private ArrayList<Observer> observers = new ArrayList<>();
 
     protected String name;
 
+    /**
+     * Checks state of current input, sets output accordingly, and notifies all observers
+     * If Subject = null, no input, default true
+     * Else invert input
+     */
     @Override
     public void update() {
-        output = !input.getOutput();
+        if (input == null){
+            output = true;
+            notifyObservers();
+            return;
+        }
+
+        if (input.getOutput()){
+            output = false;
+        }else{
+            output = true;
+        }
         notifyObservers();
     }
 
@@ -43,6 +63,10 @@ public class NotGate implements Subject, Observer{
         this.name = name;
     }
 
+    /**
+     * Sets current input to new Subject
+     * @param input Subject to observer
+     */
     @Override
     public void addInput(Subject input) {
         this.input = input;

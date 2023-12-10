@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Or gate implementation of Observer & Subject
+ * Takes any number of inputs and if any are true outputs true, false otherwise
+ * No input state is true
+ */
 public class OrGate implements Observer, Subject{
 
     private List<Observer> observers = new ArrayList<>();

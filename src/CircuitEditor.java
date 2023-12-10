@@ -31,44 +31,41 @@ public class CircuitEditor {
         NotGate notGate = new NotGate();
         notGate.addInput(orGate);
 
-        System.out.printf("Switch 1:  [%b]\n" +
-                        "      |\n" +
-                        "      |-AND Gate [%b]-| \n" +
-                        "      |                | \n" +
-                        "Switch 2 [%b]        |\n" +
-                        "                       |\n" +
-                        "                       |---OR Gate [%b]---| \n" +
-                        "                       |                    |\n" +
-                        " Switch 3 [%b] -----|                    |\n" +
-                        "                                            |---NOT Gate---[%b]\n%n", switch1.getOutput(),
-                switch2.getOutput(), andGate.getOutput(),orGate.getOutput(), switch3.getOutput(), notGate.getOutput());
+
+        printDemoCircuit( switch1, switch2, andGate,orGate, switch3, notGate);
 
         // Display values for all gates
-        System.out.println("AND Gate Output (should be false): " + andGate.getOutput());
-        System.out.println("OR Gate Output (should be false): " + orGate.getOutput());
-        System.out.println("NOT Gate Output (should be true): " + notGate.getOutput());
+
 
         System.out.println("\nFlipping Switch 2\n");
         // Change switch state to change all gate states
         switch2.setState(true);
 
         // Display values for all gates
-        System.out.println("AND Gate Output (should be true): " + andGate.getOutput());
-        System.out.println("OR Gate Output (should be true): " + orGate.getOutput());
-        System.out.println("NOT Gate Output (should be false): " + notGate.getOutput());
 
+        printDemoCircuit( switch1, switch2, andGate,orGate, switch3, notGate);
+
+
+
+    }
+
+
+    private static void printDemoCircuit(Switch s1, Switch s2, AndGate ag, OrGate og, Switch s3, NotGate ng){
         System.out.printf("Switch 1:  [%b]\n" +
-                "      |\n" +
-                "      |-AND Gate [%b]-| \n" +
-                "      |                | \n" +
-                "Switch 2: [%b]       |\n" +
-                "                       |\n" +
-                "                       |---OR Gate [%b]---| \n" +
-                "                       |                    |\n" +
-                " Switch 3 [%b] -----|                    |\n" +
-                "                                            |---NOT Gate---[%b]\n%n", switch1.getOutput(),
-                switch2.getOutput(), andGate.getOutput(),orGate.getOutput(), switch3.getOutput(), notGate.getOutput());
+                        "      |\n" +
+                        "      |-AND Gate [%b]-| \n" +
+                        "      |                | \n" +
+                        "Switch 2: [%b]       |\n" +
+                        "                       |\n" +
+                        "                       |---OR Gate [%b]---| \n" +
+                        "                       |                    |\n" +
+                        " Switch 3 [%b] -----|                    |\n" +
+                        "                                            |---NOT Gate---[%b]\n%n", s1.getOutput(),
+                s2.getOutput(), ag.getOutput(),og.getOutput(), s3.getOutput(), ng.getOutput());
 
+        System.out.println("AND Gate Output (should be false): " + ag.getOutput());
+        System.out.println("OR Gate Output (should be false): " + og.getOutput());
+        System.out.println("NOT Gate Output (should be true): " + ng.getOutput());
 
 
     }

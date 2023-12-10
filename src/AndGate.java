@@ -1,11 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * And gate implementation of Observer & Subject
+ * Takes any number of input Subjects and outputs true only when all inputs are true
+ * Defaults to false when no inputs
+ */
 public class AndGate implements Observer, Subject{
 
     private List<Subject> inputs = new ArrayList<>();
     private List<Observer> observers = new ArrayList<>();
-    protected boolean output;
+    protected boolean output = false;
     protected String name;
 
     @Override
