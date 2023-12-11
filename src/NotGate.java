@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class NotGate implements Subject, Observer{
 
-    private Subject input;
+    private Subject input = null;
 
     protected boolean output = true;
 
@@ -47,6 +47,11 @@ public class NotGate implements Subject, Observer{
         observers.add(o);
     }
 
+    /**
+     * Removes Observer from observers list, will no longer be notified of changes in this Subjects output
+     * Ensures given Observer is in the list first
+     * @param o Observer object to remove from observers list
+     */
     @Override
     public void removeObserver(Observer o) {
         int i = observers.indexOf(o);
@@ -55,6 +60,9 @@ public class NotGate implements Subject, Observer{
         }
     }
 
+    /**
+     * Iterates over all Observers in observer list and tells it to check its inputs and update
+     */
     @Override
     public void notifyObservers() {
         for (Observer o : observers){
@@ -62,11 +70,20 @@ public class NotGate implements Subject, Observer{
         }
     }
 
+    /**
+     * Helper method returns current output
+     * @return boolean current state of gate
+     */
     @Override
     public boolean getOutput() {
         return output;
     }
 
+    /**
+     * Allows String representation of a gate
+     * Sets this.name to given string
+     * @param name String to set this.name to
+     */
     @Override
     public void setName(String name) {
         this.name = name;
@@ -74,6 +91,7 @@ public class NotGate implements Subject, Observer{
 
     /**
      * Sets current input to new Subject
+     * Adds this gate to Subjects list of observers
      * @param input Subject to observer
      */
     @Override
@@ -82,6 +100,10 @@ public class NotGate implements Subject, Observer{
         input.addObserver(this);
     }
 
+    /**
+     * Helper method returns current gate name
+     * @return String this.name
+     */
     @Override
     public String getName() {
         return name;

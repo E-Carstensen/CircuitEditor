@@ -53,7 +53,7 @@ public class Switch implements Subject{
     }
 
     /**
-     * Helper method for retrieving current state of the gate
+     * Helper method for retrieving current state of the switch
      * @return boolean current this.state
      */
     @Override
